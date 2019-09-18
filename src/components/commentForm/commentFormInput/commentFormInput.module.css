@@ -1,0 +1,15 @@
+.commentFormInput__label {
+  margin: 10px 45px;
+  text-transform: uppercase;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.commentFormInput__input {
+  width: 92%;
+  margin: 10px auto;
+  height: 30px;
+  border: 3px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+}

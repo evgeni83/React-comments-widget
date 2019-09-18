@@ -26,7 +26,6 @@
   align-self: flex-end;
 }
 
-.commentForm__input,
 .commentForm__textarea {
   width: 92%;
   margin: 10px auto;

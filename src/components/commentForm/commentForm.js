@@ -1,4 +1,5 @@
 import React from "react";
+import CommentFormInput from "./commentFormInput/commentFormInput";
 import style from "./commentForm.module.css";
 
 
@@ -8,20 +9,9 @@ const CommentForm = props => {
       className={style.commentForm}
       onSubmit={ev => props.addNewComment(ev)}
     >
-      <label className={style.commentForm__label} htmlFor="commentAuthor">
-        Имя
-      </label>
-      <input
-        className={style.commentForm__input}
-        type="text"
-        name="commentAuthor"
-        id="commentAuthor"
-        placeholder="Ваше имя"
-        onChange={ev => {
-          props.setState({ newCommentAuthor: ev.target.value });
-        }}
-        value={props.state.newCommentAuthor}
-        required
+      <CommentFormInput
+        state={props.state}
+        setState={props.setState}
       />
       <label className={style.commentForm__label} htmlFor="commentText">
         Комментарий
