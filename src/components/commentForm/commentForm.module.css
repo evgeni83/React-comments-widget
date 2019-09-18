@@ -6,13 +6,6 @@
   justify-content: space-between;
 }
 
-.commentForm__label {
-  margin: 10px 45px;
-  text-transform: uppercase;
-  font-weight: 600;
-  align-self: flex-start;
-}
-
 .commentForm__button {
   margin: 20px 45px;
   padding: 16px;
@@ -24,20 +17,6 @@
   text-transform: uppercase;
   cursor: pointer;
   align-self: flex-end;
-}
-
-.commentForm__textarea {
-  width: 92%;
-  margin: 10px auto;
-  height: 30px;
-  border: 3px solid blue;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.commentForm__textarea {
-  height: 150px;
-  resize: none;
 }
 
 .commentsList {

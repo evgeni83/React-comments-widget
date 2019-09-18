@@ -4,7 +4,7 @@ import style from "./commentFormInput.module.css";
 const CommentFormInput = props => {
   return (
     <label className={style.commentFormInput__label} htmlFor="commentAuthor">
-      Имя
+      <div>Имя</div>
       <input
         className={style.commentFormInput__input}
         type="text"
