@@ -4,6 +4,12 @@ import CommentsListItem from "./components/commentsListItem/commentsListItem";
 import style from "./index.module.css";
 
 class CommentsWigetApp extends React.Component {
+  state = {
+    comments: [],
+    newCommentAuthor: "",
+    newCommentText: ""
+  };
+
   constructor(props) {
     super(props);
     if (localStorage.hasOwnProperty("comments")) {
@@ -11,13 +17,7 @@ class CommentsWigetApp extends React.Component {
         comments: JSON.parse(localStorage.getItem("comments")),
         newCommentAuthor: "",
         newCommentText: ""
-      }
-    } else {
-      this.state = {
-        comments: [],
-        newCommentAuthor: "",
-        newCommentText: ""
-      }
+      };
     };
   };
 
@@ -58,6 +58,11 @@ class CommentsWigetApp extends React.Component {
   render() {
     return (
       <div className={style.appWrapper}>
+        <CommentForm
+          addNewComment={this.addNewComment.bind(this)}
+          setState={this.setState.bind(this)}
+          state={this.state}
+        />
         <form
           className={style.addCommentForm}
           onSubmit={ev => this.addNewComment(ev)}
@@ -84,38 +89,34 @@ class CommentsWigetApp extends React.Component {
             Комментарий
           </label>
           <textarea
-              className={style.addCommentForm__textarea}
-              type="text"
-              name="commentText"
-              id="commentText"
-              placeholder="Ваш комментарий"
-              value={this.state.newCommentText}
-              onChange={ev => {
-                this.setState({newCommentText: ev.target.value});
-              }}
-              required
-              />
+            className={style.addCommentForm__textarea}
+            type="text"
+            name="commentText"
+            id="commentText"
+            placeholder="Ваш комментарий"
+            value={this.state.newCommentText}
+            onChange={ev => {
+              this.setState({ newCommentText: ev.target.value });
+            }}
+            required
+          />
           <button className={style.addCommentForm__button} type="submit">
             Добавить комментарий
           </button>
         </form>
 
         <ul className={style.commentsList}>
-          {this.state.comments.map(
-            (comment, i) =>
-              {
-                return (
-                  <CommentsListItem
-                    key={i}
-                    author={comment.author}
-                    time={comment.time}
-                    text={comment.text}
-                    deleteComment={this.deleteComment.bind(this, i)}
-                  />
-                );
-              }
-            )
-          }
+          {this.state.comments.map((comment, i) => {
+            return (
+              <CommentsListItem
+                key={i}
+                author={comment.author}
+                time={comment.time}
+                text={comment.text}
+                deleteComment={this.deleteComment.bind(this, i)}
+              />
+            );
+          })}
         </ul>
       </div>
     );
