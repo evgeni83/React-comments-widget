@@ -1,0 +1,12 @@
+.commentFormButton__button {
+  margin: 20px 45px;
+  padding: 16px;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-end;
+}

@@ -65,7 +65,7 @@ class CommentsWigetApp extends React.Component {
           state={this.state}
         />
         
-
+      
         <ul className={style.commentsList}>
           {this.state.comments.map((comment, i) => {
             return (
