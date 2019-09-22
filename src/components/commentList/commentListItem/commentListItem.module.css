@@ -1,4 +1,4 @@
-.commentsListItem {
+.commentListItem {
   display: flex;
   justify-content: space-between;
   border: 1px solid blue;
@@ -7,31 +7,31 @@
   margin: 20px auto;
 }
 
-.commentsListItem__commentTitle {
+.commentListItem__commentTitle {
   min-width: 20%;
   border-right: 1px solid blue;
   padding: 10px;
 }
 
-.commentsListItem__commentAuthorName {
+.commentListItem__commentAuthorName {
   font-style: italic;
 }
 
-.commentsListItem__commentDate {
+.commentListItem__commentDate {
   font-family: monospace;
 }
 
-.commentsListItem__commentText {
+.commentListItem__commentText {
   width: 100%;
   padding: 10px;
   text-align: justify;
 }
 
-.commentsListItem__deleteButtonContainer {
+.commentListItem__deleteButtonContainer {
   position: relative;
 }
 
-.commentsListItem__deleteButton {
+.commentListItem__deleteButton {
   border: none;
   outline: none;
   background-color: transparent;
@@ -41,8 +41,8 @@
   height: 30px;
 }
 
-.commentsListItem__deleteButton div:first-child,
-.commentsListItem__deleteButton div:last-child {
+.commentListItem__deleteButton div:first-child,
+.commentListItem__deleteButton div:last-child {
   position: absolute;
   left: 50%;
   margin-left: -5px;
@@ -52,6 +52,6 @@
   transform: rotate(45deg);
 }
 
-.commentsListItem__deleteButton div:last-child {
+.commentListItem__deleteButton div:last-child {
   transform: rotate(-45deg);
 }

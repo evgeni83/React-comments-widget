@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CommentForm from "./components/commentForm/commentForm";
-import CommentsListItem from "./components/commentsListItem/commentsListItem";
+import CommentList from "./components/commentList/commentList";
 import style from "./index.module.css";
 
 class CommentsWigetApp extends React.Component {
@@ -13,7 +13,7 @@ class CommentsWigetApp extends React.Component {
 
   constructor(props) {
     super(props);
-    if (localStorage.hasOwnProperty("comments")) {
+    if (localStorage.hasOwnProperty("comments")) {     
       this.state = {
         comments: JSON.parse(localStorage.getItem("comments")),
         newCommentAuthor: "",
@@ -40,14 +40,17 @@ class CommentsWigetApp extends React.Component {
     localStorage.setItem("comments", JSON.stringify(this.state.comments));
   };
 
-  deleteComment(key) { 
+  
+  deleteComment(id) {
+    
     const comments = this.state.comments;
     comments.forEach((comment, i) => {
-      if (key === i) {
+      if (id === i) {
         comments.splice(i, 1);
       };
       return comments;
     }); 
+    
     this.setState({
       comments,
       newCommentAuthor: "",
@@ -64,21 +67,10 @@ class CommentsWigetApp extends React.Component {
           setState={this.setState.bind(this)}
           state={this.state}
         />
-        
-      
-        <ul className={style.commentsList}>
-          {this.state.comments.map((comment, i) => {
-            return (
-              <CommentsListItem
-                key={i}
-                author={comment.author}
-                time={comment.time}
-                text={comment.text}
-                deleteComment={this.deleteComment.bind(this, i)}
-              />
-            );
-          })}
-        </ul>
+        <CommentList
+          state={this.state}
+          deleteComment={this.deleteComment.bind(this)}
+        />
       </div>
     );
   }
