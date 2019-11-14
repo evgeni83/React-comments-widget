@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CommentForm from "./components/commentForm/commentForm";
 import CommentList from "./components/commentList/commentList";
+import Comment from "./components/comment"
 import style from "./index.module.css";
 
 class CommentsWigetApp extends React.Component {
@@ -24,39 +25,34 @@ class CommentsWigetApp extends React.Component {
 
   addNewComment(ev) {
     ev.preventDefault();
-    const comments = this.state.comments;
-    if (this.state.newCommentAuthor !== "" || this.state.newCommentText !== "") {
-      comments.push({
-        author: this.state.newCommentAuthor,
-        time: [new Date().toLocaleString()],
-        text: this.state.newCommentText
-      });
-    };
-    this.setState({
-      comments,
-      newCommentAuthor: "",
-      newCommentText: ""
-    });
-    localStorage.setItem("comments", JSON.stringify(this.state.comments));
-  };
 
-  
-  deleteComment(id) {
-    
     const comments = this.state.comments;
-    comments.forEach((comment, i) => {
-      if (id === i) {
-        comments.splice(i, 1);
-      };
-      return comments;
-    }); 
     
+    if (this.state.newCommentAuthor !== "" && this.state.newCommentText !== "") {
+
+      let commentModel = new Comment(
+        this.state.newCommentAuthor,
+        [new Date().toLocaleString()],
+        this.state.newCommentText,
+        comments,
+        this.setState
+      );
+
+      comments.push({
+        author: commentModel.author,
+        time: commentModel.time,
+        text: commentModel.text
+      });
+      
+    };
+
     this.setState({
       comments,
       newCommentAuthor: "",
       newCommentText: ""
     });
-    localStorage.setItem("comments", JSON.stringify(this.state.comments));
+ 
+    localStorage.setItem("comments", JSON.stringify(comments));
   };
 
   render() {
@@ -67,9 +63,9 @@ class CommentsWigetApp extends React.Component {
           setState={this.setState.bind(this)}
           state={this.state}
         />
-        <CommentList
-          state={this.state}
-          deleteComment={this.deleteComment.bind(this)}
+        <CommentList 
+          setState={this.setState.bind(this)} 
+          state={this.state} 
         />
       </div>
     );

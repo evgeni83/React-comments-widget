@@ -12,8 +12,8 @@ const CommentFormInput = props => {
         id="commentAuthor"
         placeholder="Ваше имя"
         onChange={ev => {
-          props.setState({ newCommentAuthor: ev.target.value });
-        }}
+          props.setState({ newCommentAuthor: ev.target.value });          
+        }}    
         value={props.state.newCommentAuthor}
         required
       />
